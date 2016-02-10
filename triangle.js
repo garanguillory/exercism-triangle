@@ -20,24 +20,25 @@ var Triangle = function(a,b,c){
     });
 	};
 
-
 	this.kind = function(){
 		var array = this.sortArgs(a,b,c);
 		var sides = this.unique(array);
+
+		if( (array[1]+array[2] < array[0]) ){
+				throw "Pythagorean no-no";
+		} else if(!(array[2] > 0)){
+				throw "Pythagorean no-no";
+		}
 
 			if(sides.length == 1){
 				return 'equilateral';
 			} else if(sides.length == 2){
 				return 'isosceles';
-			} else if(sides.length == 3 && (array[1]+array[2] > array[0])){
+			} else if(sides.length == 3){
 				return 'scalene';
 			}
-
-		// var c = array[0];
-		// var b = array[1];
-		// var a = array[2];
 		
-	};
+	}; // end of this.kind function
 
 };
 
